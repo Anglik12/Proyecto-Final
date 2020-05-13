@@ -1,0 +1,49 @@
+import cv2
+import numpy as np
+
+img = cv2.imread("hotel2.jpg")
+print(img)
+img = cv2.imread("hotel2.jpg", 1)
+cv2.imshow("hotel2.jpg", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+def img_to_gray_scale(img):
+    """Recibe un objeto imagen y devuleve la imagen en blanco y negro"""
+    gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    return gray_img
+
+if __name__ == '__main__':
+    img2 = cv2.imwrite("hotel2.jpg",img_to_gray_scale(img))
+    img_gray = img_to_gray_scale(img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    print("El proyecto corrió exitosamente")
+
+
+def img_laplacian(img):
+    """Recibe imagen y le da el efecto de laplacian"""
+    img3 = cv2.imread('hotel2.jpg',0)
+    cv2.imshow('laplacian', img3)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    return img3
+if __name__ == '__main__':
+    laplacian = cv2.Laplacian(img,cv2.CV_64F)
+    sobelx = cv2.Sobel(img, cv2.CV_64F, 1, 0, ksize=5)
+    sobely = cv2.Sobel(img, cv2.CV_64F, 0, 1, ksize=5)
+    img3 = img_laplacian(img)
+    print("El proyecto corrió exitosamente")
+
+def resize(img):
+    """Cambia el tamaño de la imagen"""
+    img4 = cv2.resize(img, (0, 0), fx=0.50, fy=0.50)
+    cv2.imshow('Resized Image', img4)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    return img4
+
+if __name__ == '__main__':
+    img4 = cv2.imwrite("fauno.jpg",resize(img))
+    img_resize = resize(img)
+    print("El proyecto corrió exitosamente")
